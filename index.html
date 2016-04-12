@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <title>VueJs accordion component</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        body > div {
+            margin: 50px auto;
+        }
+
+        .fijo {
+			position: absolute;
+			width: 100%;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			height: 100%;
+		}
+    </style>
+</head>
+<body>
+	<vue-accordion :top="top" :items="items" :max-width="maxWidth"></vue-accordion>
+	<div class="fijo">
+		<div class="form-group">
+	    	<label for="width">Width:</label>
+			<select name="width" class="form-control" v-model="maxWidth">
+		</div>
+		<div class="form-group">
+	    	<label for="height">Height:</label>
+			<select name="height" class="form-control" v-model="height">
+		</div>
+		<div class="form-group">
+	    	<label for="top">Text top margin:</label>
+			<select name="top" class="form-control" v-model="top">
+		</div>
+	</div>
+	<script type="text/javascript" src="build/app.js"></script>
+</body>
+</html>
