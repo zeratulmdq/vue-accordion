@@ -1,3 +1,3 @@
-var accordion = require('./scr/vue-accordion.vue')
+var accordion = require('./src/vue-accordion.vue')
 
 module.exports = accordion
