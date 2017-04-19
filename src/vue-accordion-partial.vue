@@ -1,5 +1,46 @@
+<template>
+	<li :style="liStyles">
+		<a :href="item.url" :style="aStyles">
+			<h2 v-text="item.title" :style="h2Styles"></h2>
+			<p v-text="item.text" :style="pStyles"></p>
+		</a>
+    </li>
+</template>
+<script>
+	export default {
+		props: {
+			item: {
+				type: Object
+			},
+			styles: {
+				type: Object
+			}
+		},
+		computed: {
+			liStyles() {
+				const li = {
+					backgroundImage: 'url(' + this.item.image + ')'
+				};
+
+				if(this.styles && this.styles.li)
+					Object.assign(li, this.styles.li);
+
+				return li;
+			},
+			aStyles() {
+				return this.styles && this.styles.a ? this.styles.a : {};
+			},
+			h2Styles() {
+				return this.styles && this.styles.h2 ? this.styles.h2 : {};
+			},
+			pStyles() {
+				return this.styles && this.styles.p ? this.styles.p : {};
+			}
+		}
+	}
+</script>
 <style>
-	.accordion ul li {
+	.vue-accordion ul li {
 		display: table-cell;
 		vertical-align: bottom;
 		position: relative;
@@ -7,15 +48,10 @@
 		background-repeat: no-repeat;
 		background-position: center center;
 		transition: all 500ms ease;
+		height: 100%;
     }
 
-    .accordion ul li div {
-		display: block;
-		overflow: hidden;
-		width: 100%;
-    }
-
-    .accordion ul li div a {
+    .vue-accordion ul li a {
 		display: block;
 		width: 100%;
 		position: relative;
@@ -26,9 +62,10 @@
 		color: #fff;
 		text-decoration: none;
 		transition: all 200ms ease;
+		height: 100%;
     }
 
-    .accordion ul li div a * {
+    .vue-accordion ul li a * {
 		opacity: 0;
 		margin: 0;
 		width: 100%;
@@ -43,74 +80,26 @@
 		transition: all 400ms ease;
     }
 
-    .accordion ul li div a h2 {
+    .vue-accordion ul li a h2 {
 		text-overflow: clip;
 		font-size: 24px;
 		text-transform: uppercase;
 		margin-bottom: 2px;
-		top: 160px;
     }
 
-    .accordion ul li div a p {
-		top: 160px;
+    .vue-accordion ul li a p {
 		font-size: 13.5px;
     }
 
-    .accordion ul:hover li { width: 15%; }
+    .vue-accordion ul:hover li { width: 15%; }
 
-    .accordion ul:hover li:hover { width: 60%; }
+    .vue-accordion ul:hover li:hover { width: 60%; }
 
-    .accordion ul:hover li:hover a { background: rgba(0, 0, 0, 0.4); }
+    .vue-accordion ul:hover li:hover a { background: rgba(0, 0, 0, 0.4); }
 
-    .accordion ul:hover li:hover a * {
+    .vue-accordion ul:hover li:hover a * {
 		opacity: 1;
 		-webkit-transform: translateX(0);
 		transform: translateX(0);
     }
 </style>
-<template>
-	<li :style="liStyles">
-		<div> 
-			<a href="{{ item.url }}" :style="linkStyles">
-				<h2 :style="moveTop">{{ item.title }}</h2>
-				<p :style="moveTop">{{ item.text }}</p>
-			</a>
-		</div>
-    </li>
-</template>
-<script>
-	module.exports = {
-		props: {
-			item: {
-				type: Object
-			},
-			height: {
-				type: Number
-			},
-			top: {
-				type: Number
-			}
-		},
-		computed: {
-			computedHeight: function() {
-				return this.height + 'px';
-			},
-			linkStyles: function() {
-				return {
-					height: this.computedHeight
-				}
-			},
-			liStyles: function() {
-				return {
-					backgroundImage: 'url(' + this.item.image + ')',
-					height: this.computedHeight
-				}
-			},
-			moveTop: function() {
-				return {
-					top: this.top + 'px'
-				}
-			}
-		}
-	}
-</script>
