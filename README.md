@@ -1,56 +1,109 @@
 # vue-accordion
 Simple accordion menu component for Vuejs
 
-You can see a live demo [here](http://zeratulmdq.github.io/vue-accordion/)
+[Check it out live!](http://zeratulmdq.github.io/vue-accordion/)
 
-## Install & usage
+## Install
 
-Simply install using npm (only for browserify)
+#### NPM / Yarn
+
+Install the package:
 
 ```
 npm install vue-accordion
 ```
 
-and require it like so
+Then import it in your project
 
-```
-var Vue = require('vue')
-var accordion = require('vue-accordion')
+```js
+import Vue from 'vue'
+import {vueAccordion} from 'vue-accordion'
 
-var vm = new Vue({
-	...
-	components: {
-		vueAccordion: accordion
-	}
-	...
-})
+Vue.component('vue-accordion', vueAccordion)
 ```
 
-(you may also use the .vue files in the src folder for more flexibility)
+#### Browser global
 
-In your HTML use simply use it like so
+Just include `vue` & `vue-accordion`
 
-	<vue-accordion :items="items"
-				   :height="height" 
-				   :top="top" 
-				   :max-width="maxWidth">
-	</vue-accordion>
+```html
+<script scr="path/to/vue.js"></script>
+<script src="path/to/dist/vue-accordion.js"></script>
+```
+
+Then register the component:
+
+```html
+<script>
+	Vue.component('vue-accordion', vueAccordion)
+	
+	var vm = new Vue({
+		...
+	});
+</script>
+```
+
+## Usage
+
+Simply use it like so:
+
+```html
+<vue-accordion :items="items"
+			   :accordionClass="acClass"
+			   :styles="styles">
+</vue-accordion>
+```
+
+## Structure
+
+Once the accordion has been rendered, it'll create the following structure:
+
+````html
+<div class="vue-accordion">
+	<ul>
+		<!-- First menu item-->
+		<li>
+			<a>
+				<h2>...</h2>
+				<p>...</p>
+			</a>
+	  </li>
+	  <!-- Second menu item-->
+		<li>
+			<a>
+				<h2>...</h2>
+				<p>...</p>
+			</a>
+	  </li>
+	  ...
+	</ul>
+</div>
+````
+
+All CSS is based uppon this structure. 
+
+```css
+.vue-accordion {
+	...
+}
+
+.vue-accordion ul {
+	...
+}
+
+...
+
+.vue-accordion ul li a h2 {
+	...
+}
+```
+
+If you want to modify the styling, take a look at the `accordionClass` and `styles` props.
 
 ## Options
 
-The component accepts four parameters:
-
-##### Height
-Numeric. The height of the accordion, defaults to 350.
-
-##### Width
-Numeric. The max width of the accordion, defaults to 900. The component will expand up to this param. If you set it to 0, it'll use 100% of the parent node. If you need to set a percentage width, just set this param to 0 and wrap the component in a X% width html element.
-
-##### Top
-Numeric. The top margin of the H2 element inside each panel, defaults to 50px.
-
-##### Items
-The only mandatory param. An array of objects to create the panels inside the accordeon. Each object must have this structure:
+##### items
+Mandatory. An array of objects to create the panels inside the accordion. Each object must have this structure:
 	
     {
     	title: 'First',
@@ -58,13 +111,48 @@ The only mandatory param. An array of objects to create the panels inside the ac
         url: '#',
         image: '/images/one.jpg'
     }
-   
 
 Take into consideration the width of the accordion and the images you use. If the image is shorter, you'll see a an awful grey background.
 
+##### accordionClass
+Optional. A string bounded to the class attribute of the main div. Defaults to `vue-accordion`.
+
+##### styles
+Optional. An object whose keys are other objects containing specific CSS properties to be bound to the elements created inside the accordion:
+
+```js
+{
+	// this will be bound to the style attribute of all `div`s inside the accordion
+	div: {
+		height: '350px'
+	},
+	// this will be bound to the style attribute of all `ul`s inside the accordion
+	ul: {
+		color: '#F00'
+	},
+	// this will be bound to the style attribute of all `li`s inside the accordion
+	li: {
+		fontSize: '15px'
+	},
+	// this will be bound to the style attribute of all `a`s inside the accordion
+	a: {
+		padding: '30px'
+	},
+	// this will be bound to the style attribute of all `h2`s inside the accordion
+	h2: {
+		marginTop: '100px'
+	},
+	// this will be bound to the style attribute of all `p`s inside the accordion
+	p: {
+		textTransform: 'uppercase'
+	}
+}
+```
+
 ## TODO
 
-Webpack / globals (help appreciated)
+- Tests
+- Router-link
 
 ## CREDITS
 
