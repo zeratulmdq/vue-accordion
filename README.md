@@ -3,6 +3,10 @@ Simple accordion menu component for Vuejs
 
 [Check it out live!](http://zeratulmdq.github.io/vue-accordion/)
 
+## Note
+
+The API has changed. Check [v0.0.3 documentation](/docs/0.0.3.md) if you use the old version.
+
 ## Install
 
 #### NPM / Yarn
@@ -35,11 +39,11 @@ Then register the component:
 
 ```html
 <script>
-	Vue.component('vue-accordion', vueAccordion)
-	
-	var vm = new Vue({
-		...
-	});
+  Vue.component('vue-accordion', vueAccordion)
+  
+  var vm = new Vue({
+    ...
+  });
 </script>
 ```
 
@@ -48,10 +52,7 @@ Then register the component:
 Simply use it like so:
 
 ```html
-<vue-accordion :items="items"
-			   :accordionClass="acClass"
-			   :styles="styles">
-</vue-accordion>
+<vue-accordion :items="items" :accordionClass="acClass" :styles="styles"></vue-accordion>
 ```
 
 ## Structure
@@ -60,23 +61,23 @@ Once the accordion has been rendered, it'll create the following structure:
 
 ````html
 <div class="vue-accordion">
-	<ul>
-		<!-- First menu item-->
-		<li>
-			<a>
-				<h2>...</h2>
-				<p>...</p>
-			</a>
-	  </li>
-	  <!-- Second menu item-->
-		<li>
-			<a>
-				<h2>...</h2>
-				<p>...</p>
-			</a>
-	  </li>
-	  ...
-	</ul>
+  <ul>
+    <!-- First menu item-->
+    <li>
+      <a>
+        <h2>...</h2>
+        <p>...</p>
+      </a>
+    </li>
+    <!-- Second menu item-->
+    <li>
+      <a>
+        <h2>...</h2>
+        <p>...</p>
+      </a>
+    </li>
+    ...
+  </ul>
 </div>
 ````
 
@@ -84,17 +85,17 @@ All CSS is based uppon this structure.
 
 ```css
 .vue-accordion {
-	...
+  ...
 }
 
 .vue-accordion ul {
-	...
+  ...
 }
 
 ...
 
 .vue-accordion ul li a h2 {
-	...
+  ...
 }
 ```
 
@@ -104,13 +105,15 @@ If you want to modify the styling, take a look at the `accordionClass` and `styl
 
 ##### items
 Mandatory. An array of objects to create the panels inside the accordion. Each object must have this structure:
-	
-    {
-    	title: 'First',
-        text: 'text',
-        url: '#',
-        image: '/images/one.jpg'
-    }
+
+```  
+{
+  title: 'First',
+  text: 'text',
+  url: '#',
+  image: '/images/one.jpg'
+}
+```
 
 Take into consideration the width of the accordion and the images you use. If the image is shorter, you'll see a an awful grey background.
 
@@ -122,30 +125,30 @@ Optional. An object whose keys are other objects containing specific CSS propert
 
 ```js
 {
-	// this will be bound to the style attribute of all `div`s inside the accordion
-	div: {
-		height: '350px'
-	},
-	// this will be bound to the style attribute of all `ul`s inside the accordion
-	ul: {
-		color: '#F00'
-	},
-	// this will be bound to the style attribute of all `li`s inside the accordion
-	li: {
-		fontSize: '15px'
-	},
-	// this will be bound to the style attribute of all `a`s inside the accordion
-	a: {
-		padding: '30px'
-	},
-	// this will be bound to the style attribute of all `h2`s inside the accordion
-	h2: {
-		marginTop: '100px'
-	},
-	// this will be bound to the style attribute of all `p`s inside the accordion
-	p: {
-		textTransform: 'uppercase'
-	}
+  // this will be bound to the style attribute of all `div`s inside the accordion
+  div: {
+    height: '350px'
+  },
+  // this will be bound to the style attribute of all `ul`s inside the accordion
+  ul: {
+    color: '#F00'
+  },
+  // this will be bound to the style attribute of all `li`s inside the accordion
+  li: {
+    fontSize: '15px'
+  },
+  // this will be bound to the style attribute of all `a`s inside the accordion
+  a: {
+    padding: '30px'
+  },
+  // this will be bound to the style attribute of all `h2`s inside the accordion
+  h2: {
+    marginTop: '100px'
+  },
+  // this will be bound to the style attribute of all `p`s inside the accordion
+  p: {
+    textTransform: 'uppercase'
+  }
 }
 ```
 
