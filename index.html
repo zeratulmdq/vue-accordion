@@ -3,49 +3,83 @@
 <head>
 	<meta charset="utf-8">
     <title>VueJs accordion component</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-    <style>
-        body {
-            margin: 0;
-            padding-top: 50px;
-        }
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <style type="text/css">
+    	body {
+    		padding: 20px 0;
+    	}
 
-        form {
-        	margin-top: 40px;
-        }
+    	.advice {
+    		text-align: center;
+    		margin: 25px 0;
+    	}
 
-        .form-inline > .form-group {
-        	padding: 0px 20px;
-        }
-
-        .fijo {
-			position: absolute;
-			width: 100%;
-			display: flex;
-			flex-direction: column;
-			justify-content: center;
-			align-items: center;
-		}
+    	.advice > span {
+    		font-style: italic; 
+    	}
     </style>
 </head>
 <body>
-	<div class="fijo">
-		<vue-accordion :height="height" :top="top" :items="items" :max-width="maxWidth"></vue-accordion>
-		<form class="form-inline">
-			<div class="form-group">
-		    	<label for="width">Width:</label>
-				<input name="width" class="form-control" v-model="maxWidth" number>
+	<div id="app" class="container">
+		<vue-accordion :items="items" :styles="styles"></vue-accordion>
+		<hr />
+		<p class="advice">The styles below are used as the <span>styles</span> prop. Play around to see how they work.</p>	
+		<div class="row options">
+			<div class="col-md-3">
+				<h3>Menu</h3>
+				<div class="form-group">
+				    <label for="div-height">Height:</label>
+					<input id="div-height" class="form-control" v-model="div.height" type="range" min="100" max="350" value="200">
+				</div>
+				<div class="checkbox">
+					<label>
+					  <input type="checkbox" v-model="div.center" checked> Center
+					</label>
+			    </div>
 			</div>
-			<div class="form-group">
-		    	<label for="height">Height:</label>
-				<input name="height" class="form-control" v-model="height" number>
+			<div class="col-md-3">
+				<h3>Panels</h3>
+				<div class="form-group">
+				    <label for="panel-border">Border:</label>
+					<input id="panel-border" class="form-control" v-model="panel.border" type="range" min="0" max="10" value="0">
+				</div>
+				<div class="form-group">
+				    <label for="padding-padding">Padding:</label>
+					<input id="padding-padding" class="form-control" v-model="panel.padding" type="range" min="0" max="30" value="0">
+				</div>
 			</div>
-			<div class="form-group">
-		    	<label for="top">Text top margin:</label>
-				<input name="top" class="form-control" v-model="top" number>
+			<div class="col-md-3">
+				<h3>Titles</h3>
+				<div class="form-group">
+				    <label for="titles-font">Font size:</label>
+					<input id="titles-font" class="form-control" v-model="titles.font" type="range" min="10" max="30" value="15">
+				</div>
+				<div class="form-group">
+				    <label for="titles-color">Text color:</label>
+					<select id="titles-color" class="form-control" v-model="titles.color">
+						<option value="white">White</option>
+						<option value="red">Red</option>
+						<option value="green">Green</option>
+						<option value="blue">Blue</option>
+						<option value="black">Black</option>
+					</select>
+				</div>
 			</div>
-		</form>
+			<div class="col-md-3">
+				<h3>Texts</h3>
+				<div class="form-group">
+				    <label for="texts-font">Font size:</label>
+					<input id="texts-font" class="form-control" v-model="texts.font" type="range" min="10" max="20" value="12">
+				</div>
+				<div class="form-group">
+				    <label for="texts-margin">Margin top:</label>
+					<input id="texts-margin" class="form-control" v-model="texts.margin" type="range" min="0" max="30" value="0">
+				</div>
+			</div>
+		</div>
 	</div>
-	<script type="text/javascript" src="js/app.js"></script>
+	<script src="https://unpkg.com/vue"></script>
+	<script src="https://unpkg.com/vue-accordion"></script>
+	<script src="js/app.js"></script>
 </body>
 </html>
