@@ -35,6 +35,13 @@ Just include `vue` & `vue-accordion`
 <script src="path/to/dist/vue-accordion.js"></script>
 ```
 
+If you just want to play around, [unpkg](https://unpkg.com/#/) has ready-to-use packages from NPM.
+
+```html
+<script src="https://unpkg.com/vue"></script>
+<script src="https://unpkg.com/vue-accordion"></script>
+```
+
 Then register the component:
 
 ```html
