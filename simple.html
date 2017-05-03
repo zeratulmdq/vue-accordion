@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <title>VueJs accordion component</title>
+    <style type="text/css">
+    	body {
+    		padding: 20px 0;
+    	}
+
+    	.advice {
+    		text-align: center;
+    		margin: 25px 0;
+    	}
+
+    	.advice > span {
+    		font-style: italic; 
+    	}
+    </style>
+</head>
+<body>
+	<div id="app" class="container">
+		<vue-accordion :items="items" style="margin: 0 auto"></vue-accordion>
+		<p class="advice">Default styling. If you wanna play aroud, <a href="simple.html">go to the full version.</a></p>
+	</div>
+	<script src="https://unpkg.com/vue"></script>
+	<script src="https://unpkg.com/vue-accordion"></script>
+	<script src="js/app.js"></script>
+</body>
+</html>
